@@ -1,0 +1,16 @@
+div {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+}
+
+select {
+    margin-right: 10px;
+}
+
+span {
+    font-weight: bold;
+    color: blue;
+}

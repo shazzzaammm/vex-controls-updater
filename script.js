@@ -53,11 +53,22 @@ function generateConstructor() {
     let result = "(";
     let total_found = 0;
     for (const func of functions) {
-        for (const selector of selectors) {
-            if (selector.childNodes[1].value == func) {
-                result += `DIGITAL_${selector.childNodes[0].innerText}, `;
-                total_found++;
-                break;
+        if (func == "Toggle Wings") {
+            result += "{";
+            for (const selector of selectors) {
+                if (selector.childNodes[1].value == func) {
+                    result += `DIGITAL_${selector.childNodes[0].innerText}, `;
+                }
+            }
+            result += "}, ";
+            total_found++;
+        } else {
+            for (const selector of selectors) {
+                if (selector.childNodes[1].value == func) {
+                    result += `DIGITAL_${selector.childNodes[0].innerText}, `;
+                    total_found++;
+                    break;
+                }
             }
         }
     }
