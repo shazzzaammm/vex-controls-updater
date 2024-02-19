@@ -42,8 +42,8 @@ function createSelect(name) {
         elem.innerText = fn;
         selector.appendChild(elem);
     }
-    div.appendChild(label);
     div.appendChild(selector);
+    div.appendChild(label);
     document.body.appendChild(div);
     return div;
 }
@@ -56,16 +56,16 @@ function generateConstructor() {
         if (func == "Toggle Wings") {
             result += "{";
             for (const selector of selectors) {
-                if (selector.childNodes[1].value == func) {
-                    result += `DIGITAL_${selector.childNodes[0].innerText}, `;
+                if (selector.childNodes[0].value == func) {
+                    result += `DIGITAL_${selector.childNodes[1].innerText}, `;
                 }
             }
             result += "}, ";
             total_found++;
         } else {
             for (const selector of selectors) {
-                if (selector.childNodes[1].value == func) {
-                    result += `DIGITAL_${selector.childNodes[0].innerText}, `;
+                if (selector.childNodes[0].value == func) {
+                    result += `DIGITAL_${selector.childNodes[1].innerText}, `;
                     total_found++;
                     break;
                 }
@@ -82,4 +82,6 @@ function generateConstructor() {
     }
 }
 
+document.body.appendChild(document.createElement("button"));
 document.querySelector("button").addEventListener("click", generateConstructor);
+document.querySelector("button").innerText = "Generate Button";
